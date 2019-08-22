@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//program that iterate all the static data for roxiler company
+//program that iterate all the static data for roxiler company(Complete)
 
 export default class List extends Component {
     constructor(props){
