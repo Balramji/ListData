@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-//program that iterate all the static data for roxiler company(Complete)
 
 export default class List extends Component {
     constructor(props){
@@ -21,7 +20,6 @@ export default class List extends Component {
                 { id: 12, name: "Jit", age: 29, city: "Vadodara", mark: 72, suggestions: [4, 5, 7] },
                 ],
                 search:'',
-                // contacts:props.contacts
         
     };
 }
