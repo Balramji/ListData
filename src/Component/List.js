@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+//program that iterate all the static data for roxiler company
 
 export default class List extends Component {
     constructor(props){
         super(props);
         this.state={
+            title:"Creating the list Items",
             dataObject : [
                 { id: 1, name: "Test1", age: 27, city: "Pune", mark: 89, suggestions: [4, 5, 7] },
                 { id: 2, name: "Veer", age: 23, city: "Surat", mark: 43, suggestions: [1, 3, 7] },
@@ -17,23 +19,40 @@ export default class List extends Component {
                 { id: 10, name: "Sameer", age: 27, city: "Mumbai", mark: 50, suggestions: [10, 6, 8] },
                 { id: 11, name: "Vikram", age: 23, city: "Chennai", mark: 44, suggestions: [3, 2, 1] },
                 { id: 12, name: "Jit", age: 29, city: "Vadodara", mark: 72, suggestions: [4, 5, 7] },
-                ]
+                ],
+                search:'',
+                // contacts:props.contacts
         
-    }
+    };
 }
+
+updateSearch=(e)=>{
+    this.setState({search:e.target.value});
+}
+
     render() {
-        const datas=this.state.dataObject.map(data=>{
-            console.log(data);
-            return(
-                <li key={data.id}>
-                Name:{data.name},
-                Age:{data.age}, City:{data.city}
-            </li>
-            )
-        })
+        const datas=this.state.dataObject.filter((check)=>{
+                         return check.name.toLowerCase().indexOf(this.state.search)!==-1;
+        });
         return (
             <div>
-                <ul>{datas}</ul>
+                 <h2>{this.state.title}</h2>
+                <input type="text" 
+                placeholder="Type to search" 
+                value={this.state.search} 
+                onChange={this.updateSearch}/>
+
+                <ol>
+                {datas.map(data=>{
+            // console.log(data);
+            return(
+                <li key={data.id}>
+                Name: {data.name} {}
+                Age: {data.age} City: {data.city}
+            </li>
+            )
+        })}
+                </ol>
                
             </div>
         )
